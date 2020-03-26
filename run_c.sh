@@ -1,11 +1,13 @@
 #! /bin/bash
 
 rm -rf a.out
-gcc $1 $> /dev/null
+gcc $1 &> /dev/null
 
-if[[$? == 0]]; then
+if(($? == 0))
+then
   ./a.out
+  exit 0
 fi
 
-echo "comilation error"
+echo "compilation error"
 exit 1
