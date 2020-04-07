@@ -1,11 +1,12 @@
 #! /bin/bash
 
-rm -rf a.out
-gcc $1 &> /dev/null
+rm -rf *.o main
+gcc -c *.c
+gcc -o main *.o
 
 if(($? == 0))
 then
-  ./a.out
+  ./main
   exit 0
 fi
 
