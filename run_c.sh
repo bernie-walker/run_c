@@ -10,5 +10,4 @@ then
   exit 0
 fi
 
-echo "compilation error"
 exit 1
