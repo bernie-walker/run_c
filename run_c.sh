@@ -1,13 +1,29 @@
 #! /bin/bash
 
-rm -rf *.o main
-gcc -c *.c
-gcc -o main *.o
+run_app()
+{
+    rm -rf *.o main
+    gcc -c $1*.c $2
+    gcc -o main *.o
+    
+    if(($? == 0))
+    then
+        ./main
+        return 0
+    fi
+    
+    return 1
+}
 
-if(($? == 0))
+
+if [ -z $1 ]
 then
-  ./main
-  exit 0
+    run_app './'
+else
+    if [ $1 = '-t' ]
+    then
+        run_app 'test/' $2
+    fi
 fi
 
-exit 1
+exit $?
