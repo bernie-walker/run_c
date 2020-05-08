@@ -3,7 +3,7 @@
 run_app()
 {
     rm -rf *.o main
-    gcc -c $1*.c $2
+    gcc -c $1*.c ${@:2}
     gcc -o main *.o
     
     if(($? == 0))
@@ -22,7 +22,7 @@ then
 else
     if [ $1 = '-t' ]
     then
-        run_app 'test/' $2
+        run_app 'test/' ${@:2}
     fi
 fi
 
